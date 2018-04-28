@@ -5,6 +5,8 @@ class Game{
         this.screenHeight = sH;
         this.score = 0;
         this.hook = new Hook(this);
+        this.justStarted = true;
+        this.gameScore = 0;
     }
 }
 
@@ -14,28 +16,49 @@ function setup(){
 
     let canvas = createCanvas(game.screenWidth, game.screenHeight);
     canvas.parent("container");
+
+    noLoop();
 }
 
 function draw(){
     clear();
-
+    if(game.justStarted){
+        textSize(48);
+        textAlign(CENTER);
+        text("Press spacebar or touch the screen to start!", game.screenWidth/4, game.screenHeight/2,
+            game.screenWidth/2, game.screenHeight/2);
+    }
+    textSize(32);
+    textAlign(RIGHT);
+    text(game.gameScore, game.screenWidth*3/4, game.screenHeight/30, game.screenWidth/4, game.screenHeight*30);
+    line(0, game.screenHeight/10, game.screenWidth-1, game.screenHeight/10);
     drawHook();
     game.hook.move();
 }
 
 function touchStarted(){
-    game.hook.extend();
+    if(game.justStarted){
+        game.justStarted = false;
+        loop();
+    }
+    else
+        game.hook.extend();
 }
 
 function keyPressed(){
-    game.hook.extend();
+    if(game.justStarted){
+        game.justStarted = false;
+        loop();
+    }
+    else
+        game.hook.extend();
 }
 
 function drawHook(){
     let centerX = game.screenWidth/2;
     let topY = game.screenHeight/10;
 
-    ellipse(centerX, topY, game.screenWidth*0.01, game.screenWidth*0.01);
-    ellipse(game.hook.endX, game.hook.endY, game.screenWidth*0.01, game.screenWidth*0.01);
     line(centerX, topY, game.hook.endX, game.hook.endY);
+    ellipse(centerX, topY, game.screenHeight*0.01, game.screenHeight*0.01);
+    ellipse(game.hook.endX, game.hook.endY, game.screenHeight*0.01, game.screenHeight*0.01);
 }

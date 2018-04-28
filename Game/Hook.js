@@ -1,7 +1,7 @@
 class Hook {
     constructor(game){
         this.orientation = 90; // Orientation integer 0 - 180
-        this.BASE_LENGTH = game.screenWidth*0.03;
+        this.BASE_LENGTH = game.screenHeight*0.03;
         this.length = this.BASE_LENGTH; // Length of the rope
         this.direction = true; // Boolean, if true hook swinging right
 
