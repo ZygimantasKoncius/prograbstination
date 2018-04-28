@@ -1,7 +1,10 @@
+let screenWidth, screenHeight;
 function setup(){
-    var ctx = document.getElementById("container");
+    const ctx = document.getElementById("container");
     console.log();
-    var canvas = createCanvas(ctx.offsetWidth, ctx.offsetHeight);
+    screenWidth = ctx.offsetWidth;
+    screenHeight = ctx.offsetHeight;
+    let canvas = createCanvas(screenWidth, screenHeight);
     canvas.parent("container");
 }
 
