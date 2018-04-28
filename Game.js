@@ -96,6 +96,13 @@ function genGrab(){
     else
         randCol = BLACK;
 
+    while(randX - randWidth/2 < 2 ||
+        randY + randWidth/2 > game.screenHeight - 2  ||
+        randX + randWidth/2 > game.screenWidth - 2 ||
+        randY - randWidth/2 < game.screenHeight/2){
+        randX = random(0, game.screenWidth);
+        randY = random(0, game.screenHeight);
+    }
     for(let i of game.GrabItemArray){
         while((dist(randX,randY,i.x,i.y) < ((i.ellipseWidth + randWidth) / 2) )||
             randX - randWidth/2 < 2 ||

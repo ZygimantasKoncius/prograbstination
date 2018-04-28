@@ -133,6 +133,8 @@ class Hook {
     // Gets executed when item is grappled to the top
     retrieve(nr){
         game.score += round(game.GrabItemArray[nr].value * game.GrabItemArray[nr].multiplier);
+        if(game.GrabItemArray[nr].color[RED])
+            
         splash(this.endX, this.endY, game, game.GrabItemArray[nr].colour);
         game.GrabItemArray.splice(nr, 1);
         genGrab();
