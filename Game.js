@@ -32,10 +32,11 @@ function draw(){
     textAlign(RIGHT);
     text(game.gameScore, game.screenWidth*3/4, game.screenHeight/30, game.screenWidth/4, game.screenHeight*30);
     line(0, game.screenHeight/10, game.screenWidth-1, game.screenHeight/10);
-    drawHook();
     game.hook.move();
+    drawHook();
 }
 
+// If anything is touched, extend hook
 function touchStarted(){
     if(game.justStarted){
         game.justStarted = false;
@@ -44,7 +45,6 @@ function touchStarted(){
     else
         game.hook.extend();
 }
-
 function keyPressed(){
     if(game.justStarted){
         game.justStarted = false;
@@ -53,7 +53,11 @@ function keyPressed(){
     else
         game.hook.extend();
 }
+function keyTyped(){
+    game.hook.extend();
+}
 
+// Draw the hook
 function drawHook(){
     let centerX = game.screenWidth/2;
     let topY = game.screenHeight/10;
