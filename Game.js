@@ -13,6 +13,7 @@ class Game{
 }
 
 function setup(){
+    background(255, 195, 77);
     let ctx = document.getElementById("container");
     game = new Game(ctx.offsetWidth, ctx.offsetHeight);
 
@@ -27,6 +28,7 @@ function setup(){
 
 function draw(){
     clear();
+    background(255, 195, 77);
     if(game.justStarted){
         textSize(48);
         textAlign(CENTER);
@@ -89,15 +91,20 @@ function genGrab(){
     let randCol;
     if(n<=10)
         randCol = TEAL;
-    else if (n<=20)
+    else if (n<=30)
         randCol = RED;
-    else if (n<=40)
+    else if (n<=65)
         randCol = GOLD;
-    else if (n<=70)
-        randCol = SILVER;
     else
         randCol = BLACK;
 
+    while(randX - randWidth/2 < 2 ||
+        randY + randWidth/2 > game.screenHeight - 2  ||
+        randX + randWidth/2 > game.screenWidth - 2 ||
+        randY - randWidth/2 < game.screenHeight/2){
+        randX = random(0, game.screenWidth);
+        randY = random(0, game.screenHeight);
+    }
     for(let i of game.GrabItemArray){
         while((dist(randX,randY,i.x,i.y) < ((i.ellipseWidth + randWidth) / 2) )||
             randX - randWidth/2 < 2 ||
@@ -133,4 +140,18 @@ function spawnHearts(){
     let xInitialHeart = game.screenWidth * 1/30;
     for (let index = 0; index < game.noOfLives; index++)
       drawHeart(xInitialHeart + index*20, game.screenHeight/18, 20);
+}
+
+function endGame(){
+    noLoop();
+    game.noOfLives=3;
+    game.justStarted=true;
+    textSize(48);
+    textAlign(CENTER);
+    text("Game over! If you want to restart press space or touch the screen!", game.screenWidth/4, game.screenHeight/2,
+        game.screenWidth/2, game.screenHeight/2);
+    game.GrabItemArray = [];
+    game.score = 0;
+    for(let i = 0; i < 10; i++)
+        genGrab();
 }
