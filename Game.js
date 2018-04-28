@@ -34,7 +34,6 @@ function draw(){
     line(0, game.screenHeight/10, game.screenWidth-1, game.screenHeight/10);
     game.hook.move();
     drawHook();
-    //drawHeart(game.screenWidth/2, game.screenHeight/2, 30)
 }
 
 // If anything is touched, extend hook
@@ -68,15 +67,19 @@ function drawHook(){
     ellipse(game.hook.endX, game.hook.endY, game.screenHeight*0.01, game.screenHeight*0.01);
 }
 
+// Draw heart method
 function drawHeart(x, y, widthHeart) {
+    fill(0);
     ellipse(x + widthHeart / 4, y, widthHeart / 2, widthHeart / 2);
     ellipse(x + widthHeart * 3 / 4, y, widthHeart / 2, widthHeart / 2);
     let x1, x2, x3, y1, y2, y3;
     x1 = x + widthHeart / 4 * (1 - 1 / Math.sqrt(2));
-    y1 = y + widthHeart / 4 * Math.sqrt(2);
-    x2 = x + widthHeart * (3 / 4 + Math.sqrt(2));
+    y1 = y + widthHeart / 4 /Math.sqrt(2);
+    x2 = x + widthHeart - widthHeart / 4 * (1 - 1 / Math.sqrt(2));
     y2 = y1;
-    x3 = (x2 - x1) / 2;
-    y3 = (x2 - x1) / 2 + y;
+    x3 = x1 + (x2 - x1)/2;
+    y3 = (x2 - x1) / 2 + y2;
     triangle(x1, y1, x2, y2, x3, y3);
+    rect(x + widthHeart / 4, y, widthHeart/2, widthHeart/4);
+    fill (255);
 }
