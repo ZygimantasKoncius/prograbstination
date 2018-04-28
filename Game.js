@@ -7,12 +7,9 @@ class Game{
         this.hook = new Hook(this);
         this.justStarted = true;
         this.GrabItemArray = [];
-<<<<<<< HEAD
         this.noOfLives = 3;
-=======
         this.sprites = [];
->>>>>>> bd289cd42a5d45090317159a98d8d3fef6a42729
-    }
+}
 }
 
 function setup(){
@@ -143,4 +140,18 @@ function spawnHearts(){
     let xInitialHeart = game.screenWidth * 1/30;
     for (let index = 0; index < game.noOfLives; index++)
       drawHeart(xInitialHeart + index*20, game.screenHeight/18, 20);
+}
+
+function endGame(){
+    noLoop();
+    game.noOfLives=3;
+    game.justStarted=true;
+    textSize(48);
+    textAlign(CENTER);
+    text("Game over! If you want to restart press space or touch the screen!", game.screenWidth/4, game.screenHeight/2,
+        game.screenWidth/2, game.screenHeight/2);
+    game.GrabItemArray = [];
+    game.score = 0;
+    for(let i = 0; i < 10; i++)
+        genGrab();
 }
