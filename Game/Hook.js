@@ -65,34 +65,32 @@ class Hook {
             this.direction = !this.direction;
 
         if(this.direction)
-            this.orientation+=this.ROTATION_SPEED;
+            this.orientation += this.ROTATION_SPEED;
         else
-            this.orientation-=this.ROTATION_SPEED;
+            this.orientation -= this.ROTATION_SPEED;
     }
 
     // Check state
     checkState(){
-        if(    // Check if hook reached border
-            (this.endX <= 0)||
+        if((this.endX <= 0)||               // Check if hook reached border
             (this.endX >= game.screenWidth)||
-            (this.endY >= game.screenHeight)
-        )
+            (this.endY >= game.screenHeight))
             this.state = this.RETURNING;
-        else if (false){  // Check whether it hit any objects
+        else if (false){                    // Check whether it hit any objects
 
         }
     }
 
     // Extend method called in each loop if state is EXTENDING
     extending(){
-        this.length+=this.EXTENDING_SPEED;
+        this.length += this.EXTENDING_SPEED;
     }
 
     // Method that computes hook when it is retracting
     retract(){
         // If not retracted fully, decrease length
         if(this.length > this.BASE_LENGTH)
-            this.length-=this.EXTENDING_SPEED;
+            this.length -= this.EXTENDING_SPEED;
         else
             this.state = this.SWINGING;
         if(this.state == this.GRABBING){
