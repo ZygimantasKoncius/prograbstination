@@ -7,7 +7,11 @@ class Game{
         this.hook = new Hook(this);
         this.justStarted = true;
         this.GrabItemArray = [];
+<<<<<<< HEAD
+        this.noOfLives = 3;
+=======
         this.sprites = [];
+>>>>>>> bd289cd42a5d45090317159a98d8d3fef6a42729
     }
 }
 
@@ -47,6 +51,7 @@ function draw(){
     line(0, game.screenHeight/10, game.screenWidth-1, game.screenHeight/10);
     game.hook.move();
     drawHook();
+    spawnHearts();
     drawSprites();
 }
 
@@ -132,4 +137,10 @@ function drawHeart(x, y, widthHeart) {
     triangle(x1, y1, x2, y2, x3, y3);
     rect(x + widthHeart / 4, y, widthHeart/2, widthHeart/4);
     fill (255);
+}
+
+function spawnHearts(){
+    let xInitialHeart = game.screenWidth * 1/30;
+    for (let index = 0; index < game.noOfLives; index++)
+      drawHeart(xInitialHeart + index*20, game.screenHeight/18, 20);
 }
