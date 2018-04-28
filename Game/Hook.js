@@ -9,21 +9,21 @@ class Hook {
 
 
 
-    constructor(){
+    constructor(game){
         this.orientation = 90;
+        this.BASE_LENGTH = game.screenWidth*0.02;
         this.length = this.BASE_LENGTH;
         this.direction = true;
-        this.state = this.SWINGING;
-        this.BASE_LENGTH = 10;
         this.SWINGING = 0;
         this.EXTENDING = 1;
         this.GRABBING = 2;
         this.RETURNING = 3;
+        this.state = this.SWINGING;
     }
 
     // Method that starts extension of hook
     extend(){
-        if(this.state == SWINGING)
+        if(this.state == this.SWINGING)
             this.state = this.EXTENDING;
     }
 
