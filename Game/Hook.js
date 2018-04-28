@@ -13,7 +13,7 @@ class Hook {
         this.state = this.SWINGING;                     // One of the four states above
 
         this.ROTATION_SPEED = 2;                        // Hook global setting
-        this.EXTENDING_SPEED = 3;                       // Hook global setting
+        this.EXTENDING_SPEED = 6;                       // Hook global setting
         this.game = game;
 
         this.endX = game.screenWidth/2;
@@ -95,7 +95,7 @@ class Hook {
     retract(){
         // If not retracted fully, decrease length
         if(this.length > this.BASE_LENGTH)
-            this.length -= this.EXTENDING_SPEED;
+            this.length -= this.EXTENDING_SPEED*2;
         else{
             if(this.state == this.GRABBING)
                 for(let i=0; i<game.GrabItemArray.length; i++)
@@ -132,6 +132,7 @@ class Hook {
     // Gets executed when item is grappled to the top
     retrieve(nr){
         game.GrabItemArray.splice(nr, 1);
+        splash(this.endX, this.endY, game);
 
         genGrab();
     }

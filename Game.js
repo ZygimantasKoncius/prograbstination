@@ -8,6 +8,7 @@ class Game{
         this.justStarted = true;
         this.gameScore = 0;
         this.GrabItemArray = [];
+        this.sprites = [];
     }
 }
 
@@ -19,6 +20,8 @@ function setup(){
     canvas.parent("container");
     for(let i = 0; i < 10; i++)
         genGrab();
+    for(let i = 0; i < 15; i++)
+        game.sprites[i] = new Sprite(game.screenWidth/2, game.screenHeight/10, game);
     noLoop();
 }
 
@@ -43,6 +46,7 @@ function draw(){
     line(0, game.screenHeight/10, game.screenWidth-1, game.screenHeight/10);
     game.hook.move();
     drawHook();
+    drawSprites();
 }
 
 // If anything is touched, extend hook
