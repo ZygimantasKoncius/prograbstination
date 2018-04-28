@@ -39,6 +39,8 @@ function draw(){
         for (let i of game.GrabItemArray) {
             fill(i.colour);
             noStroke();
+            if(i.moving)
+                i.move();
             ellipse(i.x, i.y, i.ellipseWidth);
         }
     }
@@ -115,7 +117,10 @@ function genGrab(){
                 randY = random(0, game.screenHeight);
         }
     }
-    game.GrabItemArray.push(new Grab(game, randX, randY, randWidth, randCol));
+    if(random(0,100)<=15)
+        game.GrabItemArray.push(new Grab(game, randX, randY, randWidth, randCol, true));
+    else
+        game.GrabItemArray.push(new Grab(game, randX, randY, randWidth, randCol, false));
 }
 
 
