@@ -1,23 +1,25 @@
-import "./Game/Hook";
-
-game;
+let game;
 class Game{
-    hook;
-    objects;
-    score = 0;
+    constructor(sW, sH){
+        this.hook = new Hook();
+        this.screenWidth = sW;
+        this.screenHeight = sH;
+        this.score = 0;
+    }
 }
 
 function setup(){
-    game = Game();
-    hook = Hook();
+    const ctx = document.getElementById("container");
+    game = new Game(ctx.offsetWidth, ctx.offsetHeight);
 
-    createCanvas(windowWidth, windowHeight);
+    let canvas = createCanvas(game.screenWidth, game.screenHeight);
+    canvas.parent("container");
 }
 
 function draw(){
     drawHook();
     //drawGrabbables();
-    //ellipse(mouseX, mouseY, 80, 80);
+    ellipse(mouseX, mouseY, 80, 80);
 }
 
 function drawHook(){

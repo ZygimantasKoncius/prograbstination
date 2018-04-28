@@ -1,33 +1,34 @@
 class Hook {
-    orientation;   // Orientation integer 0 - 180
-    direction;     // Boolean, if true hook swinging right
+    //orientation;   // Orientation integer 0 - 180
+    //direction;     // Boolean, if true hook swinging right
 
-    length;        // Length of the rope
-    BASE_LENGTH = 10;
+    //length;        // Length of the rope
 
-    state;          // One of the four states below
-    SWINGING = 0;
-    EXTENDING = 1;
-    GRABBING = 2;
-    RETURNING = 3;
+    //state;          // One of the four states below
+
 
 
 
     constructor(){
         this.orientation = 90;
-        this.length = BASE_LENGTH;
+        this.length = this.BASE_LENGTH;
         this.direction = true;
         this.state = this.SWINGING;
+        this.BASE_LENGTH = 10;
+        this.SWINGING = 0;
+        this.EXTENDING = 1;
+        this.GRABBING = 2;
+        this.RETURNING = 3;
     }
 
     // Method that starts extension of hook
-    function extend(){
+    extend(){
         if(this.state == SWINGING)
             this.state = this.EXTENDING;
     }
 
     // Method executed on each loop to compute the movement of hook
-    function move() {
+    move() {
         if(this.state == SWINGING)
             swing();
         else if(this.state == EXTENDING) {
@@ -42,7 +43,7 @@ class Hook {
     }
 
     // Swing method called in each loop if state is SWINGING
-    function swing(){
+    swing(){
         if(orientation == 180 || orientation == 0)
             direction = !direction;
         else
@@ -53,21 +54,21 @@ class Hook {
     }
 
     // Check state
-    function checkState(){
+    checkState(){
 
     }
 
     // Extend method called in each loop if state is EXTENDING
-    function extend(){
+    extend(){
         length++;
     }
 
     // Method that computes hook when it is retracting
-    function retract(){
+    retract(){
         // If not retracted fully, decrease length
-        if(length > BASE_LENGTH)
+        if(length > this.BASE_LENGTH)
             length--;
-        if(this.state == GRABBING){
+        if(this.state == this.GRABBING){
 
         }
     }
