@@ -7,6 +7,7 @@ class Game{
         this.hook = new Hook(this);
         this.justStarted = true;
         this.gameScore = 0;
+        this.GrabItemArray = [];
     }
 }
 
@@ -16,7 +17,8 @@ function setup(){
 
     let canvas = createCanvas(game.screenWidth, game.screenHeight);
     canvas.parent("container");
-
+    for(let i = 0; i < 10; i++)
+        genGrab();
     noLoop();
 }
 
@@ -28,6 +30,9 @@ function draw(){
         text("Press spacebar or touch the screen to start!", game.screenWidth/4, game.screenHeight/2,
             game.screenWidth/2, game.screenHeight/2);
     }
+    else
+        for(let i of game.GrabItemArray)
+            ellipse(i.x, i.y, i.ellipseWidth);
     textSize(32);
     textAlign(RIGHT);
     text(game.gameScore, game.screenWidth*3/4, game.screenHeight/30, game.screenWidth/4, game.screenHeight*30);
@@ -63,6 +68,26 @@ function drawHook(){
     ellipse(centerX, topY, game.screenHeight*0.01, game.screenHeight*0.01);
     ellipse(game.hook.endX, game.hook.endY, game.screenHeight*0.01, game.screenHeight*0.01);
 }
+
+// Generate a single grab
+function genGrab(){
+    let randX = random(0, game.screenWidth);
+    let randY = random(game.screenHeight/10, game.screenHeight);
+    let randWidth = random(game.screenWidth*0.05, game.screenWidth*0.08);
+
+    for(let i of game.GrabItemArray){
+        while((dist(randX,randY,i.x,i.y) < ((i.ellipseWidth + randWidth) / 2) )||
+        randX - randWidth/2 < 2 ||
+        randY + randWidth/2 > game.screenHeight - 2  ||
+        randX + randWidth/2 > game.screenWidth - 2 ||
+        randY - randWidth/2 < game.screenHeight/9) {
+            randX = random(0, width);
+            randY = random(0, height);
+        }
+    }
+    game.GrabItemArray.push(new Grab(game, randX, randY, randWidth));
+}
+
 
 // Draw heart method
 function drawHeart(x, y, widthHeart) {

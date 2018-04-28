@@ -77,9 +77,13 @@ class Hook {
             (this.endX >= game.screenWidth)||
             (this.endY >= game.screenHeight))
             this.state = this.RETURNING;
-        else if (false){                    // Check whether it hit any objects
-
-        }
+        else                    // Check whether it hit any objects
+            for(let i of game.GrabItemArray){
+                if(dist(this.endX, this.endY, i.x, i.y) <= i.ellipseWidth/2){
+                    i.pulling = true;
+                    this.state = this.GRABBING;
+                }
+            }
     }
 
     // Extend method called in each loop if state is EXTENDING
@@ -95,7 +99,11 @@ class Hook {
         else
             this.state = this.SWINGING;
         if(this.state == this.GRABBING){
-
+            for(let i of game.GrabItemArray)
+                if(i.pulling){
+                    i.x = this.endX;
+                    i.y = this.endY;
+                }
         }
     }
 }
