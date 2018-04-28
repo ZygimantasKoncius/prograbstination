@@ -91,12 +91,10 @@ function genGrab(){
     let randCol;
     if(n<=10)
         randCol = TEAL;
-    else if (n<=20)
+    else if (n<=30)
         randCol = RED;
-    else if (n<=40)
+    else if (n<=65)
         randCol = GOLD;
-    else if (n<=70)
-        randCol = SILVER;
     else
         randCol = BLACK;
 

@@ -1,10 +1,9 @@
 const RED = 0;
 const BLACK = 1;
-const SILVER = 2;
-const TEAL = 3;
-const GOLD = 4;
-const colorArr = ["#990000", "#555555", "#333333", "#000000", "#663960"];
-const colorToMultiplier = [0, 1, 10, 20, 50];
+const TEAL = 2;
+const GOLD = 3;
+const colorArr = ["#990000", "#555555", "#000000", "#663960"];
+const colorToMultiplier = [0, 1, 20, 50];
 
 class Grab{
     constructor(game, x, y, w, col)
