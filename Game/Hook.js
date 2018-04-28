@@ -1,18 +1,18 @@
 class Hook {
     constructor(game){
-        this.orientation = 90; // Orientation integer 0 - 180
+        this.orientation = 90;                          // Orientation integer 0 - 180
         this.BASE_LENGTH = game.screenWidth*0.03;
-        this.length = this.BASE_LENGTH; // Length of the rope
-        this.direction = true; // Boolean, if true hook swinging right
+        this.length = this.BASE_LENGTH;                 // Length of the rope
+        this.direction = true;                          // Boolean, if true hook swinging right
 
         this.SWINGING = 0;
         this.EXTENDING = 1;
         this.GRABBING = 2;
         this.RETURNING = 3;
-        this.state = this.SWINGING; // One of the four states above
+        this.state = this.SWINGING;                     // One of the four states above
 
-        this.ROTATION_SPEED = 2;
-        this.EXTENDING_SPEED = 3;
+        this.ROTATION_SPEED = 2;                        // Hook global setting
+        this.EXTENDING_SPEED = 3;                       // Hook global setting
         this.game = game;
 
         this.endX = game.screenWidth/2;
@@ -78,7 +78,7 @@ class Hook {
             (this.endY >= game.screenHeight)
         )
             this.state = this.RETURNING;
-        else if (false){  // Check 
+        else if (false){  // Check whether it hit any objects
 
         }
     }

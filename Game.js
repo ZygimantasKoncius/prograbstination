@@ -19,18 +19,22 @@ function setup(){
 function draw(){
     clear();
 
-    drawHook();
     game.hook.move();
+    drawHook();
 }
 
+// If anything is touched, extend hook
 function touchStarted(){
     game.hook.extend();
 }
-
 function keyPressed(){
     game.hook.extend();
 }
+function keyTyped(){
+    game.hook.extend();
+}
 
+// Draw the hook
 function drawHook(){
     let centerX = game.screenWidth/2;
     let topY = game.screenHeight/10;
