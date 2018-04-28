@@ -30,9 +30,13 @@ function draw(){
         text("Press spacebar or touch the screen to start!", game.screenWidth/4, game.screenHeight/2,
             game.screenWidth/2, game.screenHeight/2);
     }
-    else
-        for(let i of game.GrabItemArray)
+    else {
+        for (let i of game.GrabItemArray) {
+            fill(i.colour);
             ellipse(i.x, i.y, i.ellipseWidth);
+        }
+    }
+    fill(0);
     textSize(32);
     textAlign(RIGHT);
     text(game.gameScore, game.screenWidth*3/4, game.screenHeight/30, game.screenWidth/4, game.screenHeight*30);
@@ -74,6 +78,18 @@ function genGrab(){
     let randX = random(0, game.screenWidth);
     let randY = random(game.screenHeight/10, game.screenHeight);
     let randWidth = random(game.screenWidth*0.05, game.screenWidth*0.08);
+    let n = random(1, 100);
+    let randCol;
+    if(n<=10)
+        randCol = TEAL;
+    else if (n<=20)
+        randCol = RED;
+    else if (n<=40)
+        randCol = GOLD;
+    else if (n<=70)
+        randCol = SILVER;
+    else
+        randCol = BLACK;
 
     for(let i of game.GrabItemArray){
         while((dist(randX,randY,i.x,i.y) < ((i.ellipseWidth + randWidth) / 2) )||
@@ -85,7 +101,7 @@ function genGrab(){
             randY = random(0, height);
         }
     }
-    game.GrabItemArray.push(new Grab(game, randX, randY, randWidth));
+    game.GrabItemArray.push(new Grab(game, randX, randY, randWidth, randCol));
 }
 
 
