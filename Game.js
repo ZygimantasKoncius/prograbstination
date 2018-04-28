@@ -17,18 +17,25 @@ function setup(){
 }
 
 function draw(){
-    //drawGrabbables();
-    //ellipse(mouseX, mouseY, 80, 80);
+    clear();
 
     drawHook();
-    //game.hook.move();
+    game.hook.move();
+}
+
+function touchStarted(){
+    game.hook.extend();
+}
+
+function keyPressed(){
+    game.hook.extend();
 }
 
 function drawHook(){
     let centerX = game.screenWidth/2;
     let topY = game.screenHeight/10;
 
-
-    line(centerX, topY, centerX, topY + game.hook.length);
-
+    ellipse(centerX, topY, game.screenWidth*0.01, game.screenWidth*0.01);
+    ellipse(game.hook.endX, game.hook.endY, game.screenWidth*0.01, game.screenWidth*0.01);
+    line(centerX, topY, game.hook.endX, game.hook.endY);
 }
