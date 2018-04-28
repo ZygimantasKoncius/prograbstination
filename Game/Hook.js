@@ -30,16 +30,16 @@ class Hook {
     // Method executed on each loop to compute the movement of hook
     move() {
         if(this.state == SWINGING)
-            swing();
+            this.swing();
         else if(this.state == EXTENDING) {
-            checkState();
+            this.checkState();
             if (this.state != EXTENDING)
                 return;
             else
-                extend();
+                this.extend();
         }
         else
-            retract();
+            this.retract();
     }
 
     // Swing method called in each loop if state is SWINGING

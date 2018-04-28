@@ -17,9 +17,10 @@ function setup(){
 }
 
 function draw(){
-    drawHook();
     //drawGrabbables();
     ellipse(mouseX, mouseY, 80, 80);
+
+    drawHook();
 }
 
 function drawHook(){
