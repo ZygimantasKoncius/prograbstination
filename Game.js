@@ -9,10 +9,11 @@ class Game{
         this.GrabItemArray = [];
         this.noOfLives = 3;
         this.sprites = [];
-}
+    }
 }
 
 function setup(){
+    background(255, 195, 77);
     let ctx = document.getElementById("container");
     game = new Game(ctx.offsetWidth, ctx.offsetHeight);
 
@@ -27,6 +28,7 @@ function setup(){
 
 function draw(){
     clear();
+    background(255, 195, 77);
     if(game.justStarted){
         textSize(48);
         textAlign(CENTER);
