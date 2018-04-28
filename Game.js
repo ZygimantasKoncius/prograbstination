@@ -77,12 +77,12 @@ function genGrab(){
 
     for(let i of game.GrabItemArray){
         while((dist(randX,randY,i.x,i.y) < ((i.ellipseWidth + randWidth) / 2) )||
-        randX - randWidth/2 < 2 ||
-        randY + randWidth/2 > game.screenHeight - 2  ||
-        randX + randWidth/2 > game.screenWidth - 2 ||
-        randY - randWidth/2 < game.screenHeight/9) {
-            randX = random(0, width);
-            randY = random(0, height);
+            randX - randWidth/2 < 2 ||
+            randY + randWidth/2 > game.screenHeight - 2  ||
+            randX + randWidth/2 > game.screenWidth - 2 ||
+            randY - randWidth/2 < game.screenHeight/2) {
+                randX = random(0, game.screenWidth);
+                randY = random(0, game.screenHeight);
         }
     }
     game.GrabItemArray.push(new Grab(game, randX, randY, randWidth));
@@ -92,7 +92,7 @@ function genGrab(){
 // Draw heart method
 function drawHeart(x, y, widthHeart) {
     fill(0);
-    ellipse(x + widthHeart / 4, y, widthHeart / 2, widthHeart / 2);
+    ellipse(x + widthHeart / 4, y, widthHeart /        2, widthHeart / 2);
     ellipse(x + widthHeart * 3 / 4, y, widthHeart / 2, widthHeart / 2);
     let x1, x2, x3, y1, y2, y3;
     x1 = x + widthHeart / 4 * (1 - 1 / Math.sqrt(2));

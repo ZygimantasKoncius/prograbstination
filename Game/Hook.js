@@ -2,7 +2,7 @@ class Hook {
     constructor(game){
 
         this.orientation = 90;                          // Orientation integer 0 - 180
-        this.BASE_LENGTH = game.screenHeight*0.03;
+        this.BASE_LENGTH = game.screenHeight*0.07;
         this.length = this.BASE_LENGTH;                 // Length of the rope
         this.direction = true;                          // Boolean, if true hook swinging right
 
@@ -96,14 +96,43 @@ class Hook {
         // If not retracted fully, decrease length
         if(this.length > this.BASE_LENGTH)
             this.length -= this.EXTENDING_SPEED;
-        else
+        else{
+            if(this.state == this.GRABBING)
+                for(let i=0; i<game.GrabItemArray.length; i++)
+                    if(game.GrabItemArray[i].pulling)
+                        this.retrieve(i);
             this.state = this.SWINGING;
+            }
         if(this.state == this.GRABBING){
             for(let i of game.GrabItemArray)
-                if(i.pulling){
+                 if(i.pulling){
                     i.x = this.endX;
                     i.y = this.endY;
+
+                    let centerX = this.game.screenWidth/2;
+                    let topY = game.screenHeight/10;
+
+                    let alpha = this.orientation;
+                    if(alpha > 90)
+                        alpha = 180 - alpha;
+
+                    i.x = (this.length + i.ellipseWidth/2) * cos(radians(alpha));
+                    i.y = (this.length + i.ellipseWidth/2) * sin(radians(alpha));
+
+                    if(game.hook.orientation < 90)
+                        i.x = centerX - i.x;
+                    else
+                        i.x = centerX + i.x;
+
+                    i.y += topY;
                 }
         }
+    }
+
+    // Gets executed when item is grappled to the top
+    retrieve(nr){
+        game.GrabItemArray.splice(nr, 1);
+
+        genGrab();
     }
 }
