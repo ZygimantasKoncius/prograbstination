@@ -53,9 +53,6 @@ function keyPressed(){
     else
         game.hook.extend();
 }
-function keyTyped(){
-    game.hook.extend();
-}
 
 // Draw the hook
 function drawHook(){
