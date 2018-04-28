@@ -6,7 +6,6 @@ class Game{
         this.score = 0;
         this.hook = new Hook(this);
         this.justStarted = true;
-        this.gameScore = 0;
         this.GrabItemArray = [];
         this.sprites = [];
     }
@@ -36,13 +35,15 @@ function draw(){
     else {
         for (let i of game.GrabItemArray) {
             fill(i.colour);
+            noStroke();
             ellipse(i.x, i.y, i.ellipseWidth);
         }
     }
+    stroke(0);
     fill(0);
     textSize(32);
     textAlign(RIGHT);
-    text(game.gameScore, game.screenWidth*3/4, game.screenHeight/30, game.screenWidth/4, game.screenHeight*30);
+    text(game.score, game.screenWidth*3/4, game.screenHeight/30, game.screenWidth/4, game.screenHeight*30);
     line(0, game.screenHeight/10, game.screenWidth-1, game.screenHeight/10);
     game.hook.move();
     drawHook();
