@@ -7,7 +7,11 @@ class Game{
         this.hook = new Hook(this);
         this.justStarted = true;
         this.GrabItemArray = [];
+<<<<<<< HEAD
         this.noOfLives = 3;
+=======
+        this.sprites = [];
+>>>>>>> bd289cd42a5d45090317159a98d8d3fef6a42729
     }
 }
 
@@ -19,6 +23,8 @@ function setup(){
     canvas.parent("container");
     for(let i = 0; i < 10; i++)
         genGrab();
+    for(let i = 0; i < 15; i++)
+        game.sprites[i] = new Sprite(game.screenWidth/2, game.screenHeight/10, game);
     noLoop();
 }
 
@@ -46,6 +52,7 @@ function draw(){
     game.hook.move();
     drawHook();
     spawnHearts();
+    drawSprites();
 }
 
 // If anything is touched, extend hook
