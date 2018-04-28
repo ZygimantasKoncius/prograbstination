@@ -1,5 +1,8 @@
 function setup(){
-    createCanvas(640, 480);
+    var ctx = document.getElementById("container");
+    console.log();
+    var canvas = createCanvas(ctx.offsetWidth, ctx.offsetHeight);
+    canvas.parent("container");
 }
 
 function draw(){
