@@ -7,15 +7,13 @@ class Game{
         this.hook = new Hook(this);
         this.justStarted = true;
         this.GrabItemArray = [];
-<<<<<<< HEAD
         this.noOfLives = 3;
-=======
         this.sprites = [];
->>>>>>> bd289cd42a5d45090317159a98d8d3fef6a42729
     }
 }
 
 function setup(){
+    background(255, 195, 77);
     let ctx = document.getElementById("container");
     game = new Game(ctx.offsetWidth, ctx.offsetHeight);
 
@@ -30,6 +28,7 @@ function setup(){
 
 function draw(){
     clear();
+    background(255, 195, 77);
     if(game.justStarted){
         textSize(48);
         textAlign(CENTER);
