@@ -7,11 +7,8 @@ class Game{
         this.hook = new Hook(this);
         this.justStarted = true;
         this.GrabItemArray = [];
-<<<<<<< HEAD
         this.noOfLives = 3;
-=======
         this.sprites = [];
->>>>>>> bd289cd42a5d45090317159a98d8d3fef6a42729
     }
 }
 
