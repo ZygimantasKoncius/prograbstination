@@ -39,6 +39,8 @@ function draw(){
         for (let i of game.GrabItemArray) {
             fill(i.colour);
             noStroke();
+            if(i.moving)
+                i.move();
             ellipse(i.x, i.y, i.ellipseWidth);
         }
     }
@@ -92,12 +94,10 @@ function genGrab(){
     let randCol;
     if(n<=10)
         randCol = TEAL;
-    else if (n<=20)
+    else if (n<=30)
         randCol = RED;
-    else if (n<=40)
+    else if (n<=65)
         randCol = GOLD;
-    else if (n<=70)
-        randCol = SILVER;
     else
         randCol = BLACK;
 
@@ -118,7 +118,10 @@ function genGrab(){
                 randY = random(0, game.screenHeight);
         }
     }
-    game.GrabItemArray.push(new Grab(game, randX, randY, randWidth, randCol));
+    if(random(0,100)<=15)
+        game.GrabItemArray.push(new Grab(game, randX, randY, randWidth, randCol, true));
+    else
+        game.GrabItemArray.push(new Grab(game, randX, randY, randWidth, randCol, false));
 }
 
 
