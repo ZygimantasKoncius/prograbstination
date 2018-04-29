@@ -12,9 +12,9 @@ class Hook {
         this.RETURNING = 3;
         this.state = this.SWINGING;                     // One of the four states above
 
-        this.ROTATION_SPEED = 2;                        // Hook global setting
+        this.ROTATION_SPEED = game.screenHeight*0.003;                        // Hook global setting
 
-        this.EXTENDING_SPEED = 10;                       // Hook global setting
+        this.EXTENDING_SPEED = game.screenHeight*0.01;                       // Hook global setting
         this.game = game;
 
         this.endX = game.screenWidth/2;
@@ -63,7 +63,7 @@ class Hook {
 
     // Swing method called in each loop if state is SWINGING
     swing(){
-        if(this.orientation == 180 || this.orientation == 0)
+        if(this.orientation >= 180 || this.orientation <= 0)
             this.direction = !this.direction;
 
         if(this.direction)

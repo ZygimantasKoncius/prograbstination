@@ -28,7 +28,7 @@ function setup(){
 
 function draw(){
     clear();
-    background(255, 195, 77);
+    background(231, 227, 181);
     if(game.justStarted){
         textSize(48);
         textAlign(CENTER);
@@ -154,7 +154,7 @@ function endGame(){
     game.justStarted=true;
     textSize(48);
     textAlign(CENTER);
-    text("Game over! If you want to restart press space or touch the screen!", game.screenWidth/4, game.screenHeight/2,
+    text("Game over! To restart press space or touch the screen", game.screenWidth/4, game.screenHeight/2,
         game.screenWidth/2, game.screenHeight/2);
     game.GrabItemArray = [];
     game.score = 0;

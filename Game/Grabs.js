@@ -2,7 +2,7 @@ const RED = 0;
 const BLACK = 1;
 const TEAL = 2;
 const GOLD = 3;
-const colorArr = ["#990000", "#555555", "#000000", "#663960"];
+const colorArr = ["#880000", "#AAAAAA", "#777777", "#444444"];
 const colorToMultiplier = [0, 1, 20, 50];
 
 class Grab {
