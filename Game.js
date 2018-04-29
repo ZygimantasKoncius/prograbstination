@@ -32,7 +32,7 @@ function draw(){
     if(game.justStarted){
         textSize(48);
         textAlign(CENTER);
-        text("Press spacebar or touch the screen to start!", game.screenWidth/4, game.screenHeight/2,
+        text("Press spacebar or touch the screen", game.screenWidth/4, game.screenHeight/2,
             game.screenWidth/2, game.screenHeight/2);
     }
     else {
@@ -47,6 +47,7 @@ function draw(){
     textSize(32);
     textAlign(RIGHT);
     text(game.score, game.screenWidth*3/4, game.screenHeight/30, game.screenWidth/4, game.screenHeight*30);
+    //stroke();
     line(0, game.screenHeight/10, game.screenWidth-1, game.screenHeight/10);
     game.hook.move();
     drawHook();
